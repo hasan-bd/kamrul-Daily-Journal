@@ -15,11 +15,12 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const posts = []
+let posts = []
 
 
 app.get('/',function(req,res){
   res.render('home', {startingContent: homeStartingContent})
+  console.log(posts)
 })
 
 
@@ -42,8 +43,8 @@ const post ={
   title: req.body.postTitle,
   content: req.body.postBody
 }
-
 posts.push(post)
+res.redirect('/')
 })
 
 
